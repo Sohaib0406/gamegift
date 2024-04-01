@@ -10,6 +10,11 @@ const specialTexts = ['btw thats you my love jumping, you look so cute', '02/12,
 
 document.addEventListener('keydown', (event) => {
     if (event.code === 'Space') {
+        handleJump();
+    }
+});
+document.addEventListener('touchstart', handleJump);
+    function handleJump(){
         if (!isStarted) {
             isStarted = true;
             startGame();
@@ -20,11 +25,11 @@ document.addEventListener('keydown', (event) => {
             showRandomJumpMessage();
         }
     }
-});
+
 
 function startGame() {
     const startText = document.createElement('div');
-    startText.textContent = 'Press Space to Jump';
+    startText.textContent = 'Press Space/Tap to Jump';
     startText.style.position = 'absolute';
     startText.style.top = '50%';
     startText.style.left = '50%';
