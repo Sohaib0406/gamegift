@@ -13,7 +13,10 @@ document.addEventListener('keydown', (event) => {
         handleJump();
     }
 });
-document.addEventListener('touchstart', handleJump);
+document.addEventListener('touchstart', (event) => {
+    event.preventDefault();
+    handleJump();
+});
     function handleJump(){
         if (!isStarted) {
             isStarted = true;
