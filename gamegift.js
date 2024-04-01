@@ -13,21 +13,28 @@ document.addEventListener('keydown', (event) => {
         handleJump();
     }
 });
-document.addEventListener('touchstart', (event) => {
-    event.preventDefault();
-    handleJump();
-});
-    function handleJump(){
-        if (!isStarted) {
-            isStarted = true;
-            startGame();
-        }
-        if (!isJumping) {
-            isJumping = true;
-            jump();
-            showRandomJumpMessage();
-        }
+
+document.addEventListener('click', (event) => {
+    if (!isMobile() || event.target === document.documentElement) {
+        handleJump();
     }
+});
+
+function handleJump() {
+    if (!isStarted) {
+        isStarted = true;
+        startGame();
+    }
+    if (!isJumping) {
+        isJumping = true;
+        jump();
+        showRandomJumpMessage();
+    }
+}
+
+function isMobile() {
+    return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+}
 
 
 function startGame() {
